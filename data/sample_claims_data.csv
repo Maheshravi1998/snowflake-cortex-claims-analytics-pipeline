@@ -1,0 +1,6 @@
+claim_id,policy_id,customer_id,claim_date,claim_type,claim_amount,claim_note,state
+CLM001,POL001,CUST001,2026-01-10,Auto,1200,"Customer is frustrated with the delay in claim approval",GA
+CLM002,POL002,CUST002,2026-01-11,Home,4500,"Customer appreciated the quick support from the claims team",TX
+CLM003,POL003,CUST003,2026-01-12,Auto,800,"Customer is neutral and waiting for next update",FL
+CLM004,POL004,CUST004,2026-01-13,Life,3000,"Customer is unhappy about multiple follow ups",NY
+CLM005,POL005,CUST005,2026-01-14,Auto,1500,"Customer was satisfied with the claim settlement",CA
