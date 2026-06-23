@@ -1,0 +1,23 @@
+CREATE OR REPLACE STORAGE INTEGRATION aws_s3_integration
+TYPE = EXTERNAL_STAGE
+STORAGE_PROVIDER = S3
+ENABLED = TRUE
+STORAGE_AWS_ROLE_ARN = 'arn:aws:iam::123456789012:role/snowflake-s3-role'
+STORAGE_ALLOWED_LOCATIONS = ('s3://your-s3-bucket-name/claims/');
+
+CREATE OR REPLACE FILE FORMAT claims_csv_format
+TYPE = CSV
+FIELD_OPTIONALLY_ENCLOSED_BY = '"'
+SKIP_HEADER = 1;
+
+CREATE OR REPLACE STAGE claims_stage
+URL = 's3://your-s3-bucket-name/claims/'
+STORAGE_INTEGRATION = aws_s3_integration
+FILE_FORMAT = claims_csv_format;
+
+CREATE OR REPLACE PIPE claims_snowpipe
+AUTO_INGEST = TRUE
+AS
+COPY INTO INSURANCE_ANALYTICS_DB.RAW.CLAIMS_RAW
+FROM @claims_stage
+FILE_FORMAT = claims_csv_format;
