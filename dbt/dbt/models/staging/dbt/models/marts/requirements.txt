@@ -1,0 +1,7 @@
+boto3
+pandas
+streamlit
+apache-airflow
+dbt-core
+dbt-snowflake
+snowflake-connector-python
